@@ -44,6 +44,7 @@ let contactMessages = [];
 app.post("/contact", (req, res) => {
   const { name, email, phone, subject, message } = req.body;
   
+
   if (!name || !email || !message) {
     return res.status(400).json({ error: "Name, email, and message are required" });
   }
@@ -90,4 +91,11 @@ app.put("/contact/messages/:id/read", (req, res) => {
   } else {
     res.status(404).json({ error: "Message not found" });
   }
+});
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🌾 Crop Price Server is running on port ${PORT}`);
 });
